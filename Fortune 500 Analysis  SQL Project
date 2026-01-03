@@ -1,0 +1,31 @@
+SELECT company_name, industry
+FROM fortune_companies
+WHERE industry='Technology'
+
+
+
+SELECT COUNT (*), industry
+FROM fortune_companies
+GROUP BY industry
+HAVING revenue>500
+
+
+SELECT industry, AVG (revenue) AS 'Average Revenue by Industry'
+FROM fortune_companies
+GROUP BY industry
+ORDER BY AVG (revenue) DESC
+
+
+SELECT company_name, industry,
+CASE healthcare_benefits
+	WHEN 0 THEN 'NO benefits'
+	WHEN 1 THEN 'Benefits included'
+END AS 'Benefits'
+FROM fortune_companies
+
+
+SELECT company_name, industry, revenue
+FROM fortune_companies
+WHERE industry NOT IN ('Energy','Finance')
+AND revenue<150
+ORDER BY revenue ASC
